@@ -1,9 +1,9 @@
 name: fast-forward
 
 on:
-  pull_request:
-    types:
-      - closed
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -11,14 +11,12 @@ permissions:
 jobs:
   fast-forward:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
 
       - name: Fast-forward merge
         run: |
-          git fetch origin ${{ github.event.pull_request.base.ref }} -n
-          git merge origin/${{ github.event.pull_request.base.ref }} -m "merge: \`${{ github.event.pull_request.base.ref }}\`" --ff && git push
+          git fetch origin main develop -n
+          git checkout develop
+          git merge origin/main -m "merge: \`${{ github.event.pull_request.base.ref }}\`" --ff && git push
