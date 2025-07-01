@@ -2,3 +2,4 @@ console.log("feature3 code here");
 console.log("feature3 refactoring done");
 console.log("feature3 additional changes");
 console.log("feature3 hotfix");
+console.log("feature3 final changes");
