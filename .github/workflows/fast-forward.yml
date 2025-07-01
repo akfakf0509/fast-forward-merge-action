@@ -19,5 +19,7 @@ jobs:
 
       - name: Fast-forward merge
         run: |
+          git fetch origin
+          git branch --all
           git checkout develop
           git merge main -m "merge: \`${{ github.event.pull_request.base.ref }}\`" --ff && git push
