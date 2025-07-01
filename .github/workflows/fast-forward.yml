@@ -14,11 +14,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Fast-forward merge
         run: |
-          git fetch origin main develop -n
-          git checkout main
+          git fetch origin develop -n
           git checkout develop
-          git branch
-          # git merge main -m "merge: \`${{ github.event.pull_request.base.ref }}\`" --ff && git push
+          git merge main -m "merge: \`${{ github.event.pull_request.base.ref }}\`" --ff && git push
