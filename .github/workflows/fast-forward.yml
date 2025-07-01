@@ -16,6 +16,8 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: Fast-forward merge main branch
-        run: git merge origin/main --ff-only && git push
+        run: |
+          git fetch origin main
+          git merge origin/main --ff-only && git push
         # env:
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
