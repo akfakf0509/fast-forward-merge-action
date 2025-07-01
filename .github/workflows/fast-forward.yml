@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Fast-forward merge main branch
+      - name: Fast-forward merge
         run: |
-          git fetch origin main -n
-          git merge origin/main --ff-only && git push
+          git fetch origin ${{ github.event.pull_request.base.ref }} -n
+          git merge origin/${{ github.event.pull_request.base.ref }} -m "merge: \`${{ github.event.pull_request.base.ref }}\`" --ff && git push
