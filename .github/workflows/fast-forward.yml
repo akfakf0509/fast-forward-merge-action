@@ -22,5 +22,3 @@ jobs:
         run: |
           git fetch origin main -n
           git merge origin/main --ff-only && git push
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
