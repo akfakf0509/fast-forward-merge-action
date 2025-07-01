@@ -3,6 +3,9 @@ name: fast-forward
 on:
   pull_request:
     types:
+      - opened
+      - synchronize
+      - reopened
       - closed
 
 jobs:
@@ -11,10 +14,10 @@ jobs:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Fast-forward merge main branch
         run: |
-          git merge --ff-only origin/main
+          git branch
         # env:
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
