@@ -20,4 +20,5 @@ jobs:
           git fetch origin main develop -n
           git checkout main
           git checkout develop
-          git merge main -m "merge: \`${{ github.event.pull_request.base.ref }}\`" --ff && git push
+          git branch
+          # git merge main -m "merge: \`${{ github.event.pull_request.base.ref }}\`" --ff && git push
