@@ -1,4 +1,4 @@
-name: fast-forward
+name: fast-forward-merge
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  fast-forward:
+  fast-forward-merge:
     runs-on: ubuntu-latest
     steps:
       - name: Create App Token
@@ -17,7 +17,7 @@ jobs:
         uses: actions/create-github-app-token@v2
         with:
           app-id: ${{ vars.AUTO_SYNC_BRANCH_APP_ID }}
-          private-key: ${{ vars.AUTO_SYNC_BRANCH_APP_PRIVATE_KEY }}
+          private-key: ${{ secrets.AUTO_SYNC_BRANCH_APP_PRIVATE_KEY }}
 
       - name: Get GitHub App User ID
         id: app-user-id
